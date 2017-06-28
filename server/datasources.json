@@ -1,0 +1,7 @@
+{
+  "LocalStore": {
+    "name": "LocalStore",
+    "connector": "memory",
+    "localStorage": "window.localStorage"
+  }
+}

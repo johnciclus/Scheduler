@@ -1,0 +1,790 @@
+paths:
+  /Technicians:
+    post:
+      tags:
+        - Technician
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Technician.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+    patch:
+      tags:
+        - Technician
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Technician.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+    put:
+      tags:
+        - Technician
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Technician.replaceOrCreate__put_Technicians
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+    get:
+      tags:
+        - Technician
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Technician.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Technician'
+      deprecated: false
+  /Technicians/replaceOrCreate:
+    post:
+      tags:
+        - Technician
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Technician.replaceOrCreate__post_Technicians_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+  /Technicians/upsertWithWhere:
+    post:
+      tags:
+        - Technician
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Technician.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+  '/Technicians/{id}/exists':
+    get:
+      tags:
+        - Technician
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Technician.exists__get_Technicians_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Technicians/{id}':
+    head:
+      tags:
+        - Technician
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Technician.exists__head_Technicians_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Technician
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Technician.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+    put:
+      tags:
+        - Technician
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Technician.replaceById__put_Technicians_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+    delete:
+      tags:
+        - Technician
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Technician.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Technician
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Technician.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Technician'
+        - name: id
+          in: path
+          description: Technician id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+  '/Technicians/{id}/replace':
+    post:
+      tags:
+        - Technician
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Technician.replaceById__post_Technicians_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+  /Technicians/findOne:
+    get:
+      tags:
+        - Technician
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Technician.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Technician'
+      deprecated: false
+  /Technicians/update:
+    post:
+      tags:
+        - Technician
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Technician.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Technician'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Technicians/count:
+    get:
+      tags:
+        - Technician
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Technician.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /tasks:
+    post:
+      tags:
+        - Task
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Task.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+    patch:
+      tags:
+        - Task
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Task.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+    put:
+      tags:
+        - Task
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Task.replaceOrCreate__put_tasks
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+    get:
+      tags:
+        - Task
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Task.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Task'
+      deprecated: false
+  /tasks/replaceOrCreate:
+    post:
+      tags:
+        - Task
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Task.replaceOrCreate__post_tasks_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+  /tasks/upsertWithWhere:
+    post:
+      tags:
+        - Task
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Task.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+  '/tasks/{id}/exists':
+    get:
+      tags:
+        - Task
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Task.exists__get_tasks_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/tasks/{id}':
+    head:
+      tags:
+        - Task
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Task.exists__head_tasks_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Task
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Task.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+    put:
+      tags:
+        - Task
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Task.replaceById__put_tasks_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+    delete:
+      tags:
+        - Task
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Task.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Task
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Task.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Task'
+        - name: id
+          in: path
+          description: Task id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+  '/tasks/{id}/replace':
+    post:
+      tags:
+        - Task
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Task.replaceById__post_tasks_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+  /tasks/findOne:
+    get:
+      tags:
+        - Task
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Task.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Task'
+      deprecated: false
+  /tasks/update:
+    post:
+      tags:
+        - Task
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Task.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Task'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /tasks/count:
+    get:
+      tags:
+        - Task
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Task.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  Technician:
+    properties:
+      name:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - name
+    additionalProperties: false
+  x-any:
+    properties: {}
+  Task:
+    properties:
+      name:
+        type: string
+      duration:
+        description: task duration in hours
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+    required:
+      - name
+      - duration
+    additionalProperties: false
+basePath: /api
+swagger: '2.0'
+info:
+  x-ibm-name: technician-schedule
+  version: 1.0.0
+  title: technician-schedule
+schemes:
+  - https
+host: $(catalog.host)
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
