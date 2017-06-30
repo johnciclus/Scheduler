@@ -1,7 +1,6 @@
 {
-  "LocalStore": {
-    "name": "LocalStore",
-    "connector": "memory",
-    "localStorage": "window.localStorage"
+  "db": {
+    "name": "db",
+    "connector": "memory"
   }
 }

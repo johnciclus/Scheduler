@@ -1,5 +1,5 @@
 {
-  "name": "technician-schedule",
+  "name": "scheduler",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -29,5 +29,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "technician-schedule"
+  "description": "scheduler"
 }

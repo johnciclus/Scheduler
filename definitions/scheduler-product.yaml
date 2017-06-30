@@ -1,13 +1,13 @@
 product: '1.0.0'
 
 info:
-  name: technician-schedule
-  title: technician-schedule
+  name: scheduler
+  title: scheduler
   version: '1.0.0'
 
 apis:
-  'technician-schedule':
-    $ref: technician-schedule.yaml
+  'scheduler':
+    $ref: scheduler.yaml
 
 visibility:
   view:
