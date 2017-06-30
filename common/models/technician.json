@@ -1,0 +1,29 @@
+{
+  "name": "Technician",
+  "plural": "Technicians",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "initial_time": {
+      "type": "number",
+      "required": true,
+      "description": "in hours"
+    },
+    "final_time": {
+      "type": "number",
+      "required": true,
+      "description": "in hours"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
