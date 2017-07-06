@@ -16,3 +16,15 @@ var app7 = new Vue({
     ]
   }
 })
+
+var app8 = new Vue({
+  el: '#app-8',
+  data: {
+    tasks: []
+  },
+  methods: {
+    generateTask: function () {
+      this.tasks.push({id: this.tasks.length+1, text: 'new item' })
+    }
+  }
+})

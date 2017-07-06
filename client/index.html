@@ -50,6 +50,19 @@
       </ol>
     </div>
 
+
+    <div id="app-8">
+      <button v-on:click="generateTask">Generate tasks</button>
+      <button>Organize scheduler</button>
+      <ul>
+        <todo-item
+          v-for="item in tasks"
+          v-bind:todo="item"
+          v-bind:key="item.id">
+        </todo-item>
+      </ul>
+    </div>
+
     <script src="components/app.js"></script>
     <script src="components/todo-item.js"></script>
 
