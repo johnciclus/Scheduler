@@ -1,4 +1,5 @@
 var app = new Vue({
+
   el: '#app',
   data: {
     message: 'Hello Vue!'
@@ -48,3 +49,15 @@ var app6 = new Vue({
     message: 'Hello Vue!'
   }
 })
+
+var tasksList = new Vue({
+  el: '#tasksInput',
+  data: {
+    tasksList: [
+      { id: 0, text: 'Tasks 1' },
+      { id: 1, text: 'Tasks 2' },
+      { id: 2, text: 'Tasks 3' }
+    ]
+  }
+});
+
