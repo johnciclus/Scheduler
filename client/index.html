@@ -18,9 +18,15 @@
         </cts-task>
       </ul>
     </div>
+
+    <div id="tasksList">
+    </div>
+
     <div id="tasksInput">
-      <p>{{ message }}</p>
-      <input v-model="message">
+      <p>{{ name }} {{ duration }}</p>
+      <input v-model="name">
+      <input v-model="duration">
+      <button v-on:click="createTask">Create</button>
     </div>
 
     <script src="js/ui.js"></script>
