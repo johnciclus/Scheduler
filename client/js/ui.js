@@ -67,29 +67,33 @@ var http = {
   }
 }
 
-http.get("/api/tasks")
-  .then(function(tasks){
-    var tasksList = document.getElementById("tasksList");
-    for(var id in tasks){
-      var node = document.createElement("p");
-      var textnode = document.createTextNode(tasks[id].name + tasks[id].duration);
-      node.appendChild(textnode);
-      tasksList.append(node);
-    }
+getTasks();
 
-  });
+function getTasks(){
+  http.get("/api/tasks")
+    .then(function(tasks){
+      var tasksList = document.getElementById("tasksList");
+      tasksList.innerHTML= "";
+      for(var id in tasks){
+        var node = document.createElement("p");
+        var textnode = document.createTextNode(tasks[id].name + tasks[id].duration);
+        node.appendChild(textnode);
+        tasksList.append(node);
+      }
+    });
+}
 
 var tasksInput = new Vue({
   el: '#tasksInput',
   data: {
-    name: "",
+    name: "task ",
     duration: 1
   },
   methods: {
     createTask: function (event) {
       http.post("/api/tasks", {"name": this.name, "duration": this.duration})
       .then(function(obj){
-        console.log(obj)
+        getTasks()
       });
     }
   }

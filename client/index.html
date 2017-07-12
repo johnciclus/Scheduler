@@ -10,23 +10,17 @@
     <div id="tasks">
       <button v-on:click="generateTask">Generate tasks</button>
       <button>Organize scheduler</button>
-      <ul>
-        <cts-task
-          v-for="item in tasks"
-          v-bind:task="item"
-          v-bind:key="item.id">
-        </cts-task>
-      </ul>
-    </div>
 
-    <div id="tasksList">
     </div>
 
     <div id="tasksInput">
-      <p>{{ name }} {{ duration }}</p>
       <input v-model="name">
       <input v-model="duration">
       <button v-on:click="createTask">Create</button>
+      <p>{{ name }} {{ duration }}</p>
+    </div>
+
+    <div id="tasksList">
     </div>
 
     <script src="js/ui.js"></script>
