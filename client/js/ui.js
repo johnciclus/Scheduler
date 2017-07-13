@@ -105,8 +105,18 @@ var tasks = new Vue({
     tasks: []
   },
   methods: {
-    generateTask: function () {
-      this.tasks.push({id: this.tasks.length+1, text: 'new task' })
+    generateTasks: function () {
+      //this.tasks.push({id: this.tasks.length+1, text: 'new task' })
+      for(var i=0; i<10; i++){
+        http.post("/api/tasks", {"name": "Task ", "duration": Math.floor(Math.random() * 10)})
+          .then(function(obj){
+            console.log("create task")
+          });
+      }
+      getTasks();
+    },
+    clearTasks: function(){
+
     }
   }
 });
