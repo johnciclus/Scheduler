@@ -1,0 +1,10 @@
+applications:
+- buildpack: sdk-for-nodejs
+  path: .
+  memory: 256M
+  disk_quota: 512M
+  instances: 1
+  health-check-type: none
+  domain: mybluemix.net
+  name: technician-schedule
+  host: technician-schedule

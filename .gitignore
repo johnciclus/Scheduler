@@ -18,3 +18,14 @@ coverage
 node_modules
 npm-debug.log
 .idea/*
+
+# Certificates files
+certificates/
+certificates/Certificates.pem
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Typescript v1 declaration files
+typings/
