@@ -5,18 +5,61 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Vue example</title>
 		<link rel="manifest" href="./etc/manifest.json">
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="./dist/css/vue-material.css">
 		<link rel="stylesheet" href="./dist/css/style.css">
 	</head>
 	<body>
 		<div id="app">
 			<md-toolbar>
-				<h1 class="md-title">My Title</h1>
+				<h1 class="md-title" style="flex: 1">Cognitive Technician Scheduler</h1>
+				<md-button class="md-icon-button">
+					<md-icon>more_vert</md-icon>
+				</md-button>
 			</md-toolbar>
 
-			<div class="main-content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, rerum? Error sunt, aperiam dolores, atque expedita molestiae tenetur. Quis eveniet accusamus velit explicabo adipisci reiciendis modi eaque quas, officia excepturi.</p>
+			<div id="tasks">
+				<button v-on:click="generateTasks">Generate tasks</button>
+				<button v-on:click="clearTasks">Clear tasks</button>
+				<button>Organize scheduler</button>
 			</div>
+
+			<div id="tasksInput">
+				<input v-model="name">
+				<input v-model="duration">
+				<button v-on:click="createTask">Create</button>
+				<p>{{ name }} {{ duration }}</p>
+			</div>
+			<div class="card-layout">
+				<div class="column">
+					<md-card class="md-primary" md-theme="blue" md-with-hover>
+						<md-card-media>
+							<img src="assets/card-image-1.jpg" alt="People">
+						</md-card-media>
+
+						<md-ink-ripple></md-ink-ripple>
+
+						<md-card-actions>
+							<md-button class="md-icon-button">
+								<md-icon>favorite</md-icon>
+							</md-button>
+
+							<md-button class="md-icon-button">
+								<md-icon>bookmark</md-icon>
+							</md-button>
+
+							<md-button class="md-icon-button">
+								<md-icon>share</md-icon>
+							</md-button>
+						</md-card-actions>
+					</md-card>
+					<div id="tasksList">
+
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<script src="./dist/js/bundle.js"></script>
 	</body>

@@ -130,15 +130,15 @@ var tasks = new Vue({
 		},
 		clearTasks: function() {
 			http.get("/api/tasks")
-				.then(function(tasks){
-					var promises = [];
-					tasks.forEach(function(task){
-						promises.push(http.delete("/api/tasks/"+task.id));
-					});
-					Promise.all(promises).then(function(){
-						getTasks();
-					})
+			.then(function(tasks){
+				var promises = [];
+				tasks.forEach(function(task){
+					promises.push(http.delete("/api/tasks/"+task.id));
+				});
+				Promise.all(promises).then(function(){
+					getTasks();
 				})
+			})
 		}
 	}
 
