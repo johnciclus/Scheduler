@@ -1,0 +1,21 @@
+.card-layout {
+	margin: 16px 15%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.column {
+	-webkit-box-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+
+.column {
+	  margin-left: 8px;
+}
+
+
+.md-card + .md-card {
+	margin-top: 8px;
+}
