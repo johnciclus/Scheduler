@@ -1,17 +1,4 @@
-.card-layout {
-	margin: 16px 15%;
-	display: flex
-}
-
-.column {
-	flex: 1;
-}
-
-.column {
-	  margin-left: 8px;
-}
-
-
-.md-card + .md-card {
-	margin-top: 8px;
+.paper {
+	margin: 20px;
+	padding: 10px;
 }

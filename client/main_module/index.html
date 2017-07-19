@@ -19,46 +19,31 @@
 				</md-button>
 			</md-toolbar>
 
-			<div id="tasks">
-				<button v-on:click="generateTasks">Generate tasks</button>
-				<button v-on:click="clearTasks">Clear tasks</button>
-				<button>Organize scheduler</button>
-			</div>
+			<md-bottom-bar>
+				<md-bottom-bar-item md-icon="speaker_notes" v-on:click="generateTasks">Generate tasks</md-bottom-bar-item>
+				<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
+				<md-bottom-bar-item md-icon="schedule">Organize scheduler</md-bottom-bar-item>
+			</md-bottom-bar>
 
-			<div id="tasksInput">
-				<input v-model="name">
-				<input v-model="duration">
-				<button v-on:click="createTask">Create</button>
-				<p>{{ name }} {{ duration }}</p>
-			</div>
-			<div class="card-layout">
-				<div class="column">
-					<md-card class="md-primary" md-theme="blue" md-with-hover>
-						<md-card-media>
-							<img src="assets/card-image-1.jpg" alt="People">
-						</md-card-media>
+			<md-card class="paper">
+				<div id="tasksInput">
+					<md-input-container>
+						<label>Name</label>
+						<md-input v-model="name"></md-input>
+					</md-input-container>
 
-						<md-ink-ripple></md-ink-ripple>
-
-						<md-card-actions>
-							<md-button class="md-icon-button">
-								<md-icon>favorite</md-icon>
-							</md-button>
-
-							<md-button class="md-icon-button">
-								<md-icon>bookmark</md-icon>
-							</md-button>
-
-							<md-button class="md-icon-button">
-								<md-icon>share</md-icon>
-							</md-button>
-						</md-card-actions>
-					</md-card>
-					<div id="tasksList">
-
-					</div>
+					<md-input-container>
+						<label>Duration</label>
+						<md-input v-model="duration"></md-input>
+					</md-input-container>
+					<md-button class="md-raised md-primary" v-on:click="createTask">Create</md-button>
 				</div>
-			</div>
+			</md-card>
+
+			<md-card class="paper">
+				<div id="tasksList">
+				</div>
+			</md-card>
 
 		</div>
 		<script src="./dist/js/bundle.js"></script>

@@ -9,89 +9,10 @@
 		primary: "blue",
 		accent: "red",
 		warn: "red",
-		background: "grey"
+		background: "white"
 	})
 
-	var http = {
-		"init": function (resolve, reject) {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function () {
-				if (xhttp.readyState === 4) {
-					if (xhttp.status === 200 || xhttp.status === 201) {
-						if (xhttp.responseText) {
-							try {
-								resolve(JSON.parse(xhttp.responseText));
-							} catch (e) {
-								resolve(xhttp.responseText);
-							}
-						} else {
-							reject("Empty response");
-						}
-
-					} else {
-						reject(xhttp.responseText);
-					}
-				}
-			};
-			return xhttp;
-		},
-		"get": function (url) {
-			return new Promise(function (resolve, reject) {
-				if (window.XMLHttpRequest) {
-					var xhttp = http.init(resolve, reject);
-
-					xhttp.open("GET", url);
-					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send();
-				} else {
-					reject("AJAX Calls not supported on this browser");
-				}
-			});
-		},
-		"post": function (url, requestParams) {
-			return new Promise(function (resolve, reject) {
-				if (!requestParams)
-					requestParams = {};
-
-				if (window.XMLHttpRequest) {
-					var xhttp = http.init(resolve, reject);
-
-					xhttp.open("POST", url);
-					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send(JSON.stringify(requestParams));
-
-				} else {
-					reject("AJAX Calls not supported on this browser");
-				}
-			});
-		},
-		"put": function (url) {
-			return new Promise(function (resolve, reject) {
-				if (window.XMLHttpRequest) {
-					var xhttp = http.init(resolve, reject);
-
-					xhttp.open("PUT", url);
-					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send();
-				} else {
-					reject("AJAX Calls not supported on this browser");
-				}
-			});
-		},
-		"delete": function (url) {
-			return new Promise(function (resolve, reject) {
-				if (window.XMLHttpRequest) {
-					var xhttp = http.init(resolve, reject);
-
-					xhttp.open("DELETE", url);
-					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send();
-				} else {
-					reject("AJAX Calls not supported on this browser");
-				}
-			});
-		}
-	};
+	var http = require("../js/http")
 
 	function getTasks() {
 		http.get("/api/tasks")
@@ -100,7 +21,7 @@
 				var tasksList = document.getElementById("tasksList");
 				tasksList.innerHTML = "";
 				for (var id in tasks) {
-					var node = document.createElement("p");
+					var node = document.createElement("h1");
 					var textnode = document.createTextNode(tasks[id].name + ": [duration: " + tasks[id].duration + "]");
 					node.appendChild(textnode);
 					tasksList.prepend(node);

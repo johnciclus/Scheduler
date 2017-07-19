@@ -23,7 +23,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		primary: "blue",
 		accent: "red",
 		warn: "red",
-		background: "grey"
+		background: "white"
 	});
 
 	var http = {
@@ -110,7 +110,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 			var tasksList = document.getElementById("tasksList");
 			tasksList.innerHTML = "";
 			for (var id in tasks) {
-				var node = document.createElement("p");
+				var node = document.createElement("md-button");
 				var textnode = document.createTextNode(tasks[id].name + ": [duration: " + tasks[id].duration + "]");
 				node.appendChild(textnode);
 				tasksList.prepend(node);
