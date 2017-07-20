@@ -29,7 +29,7 @@
 			});
 	}
 
-	var app = new Vue({
+	new Vue({
 		el: "#app",
 		data: {
 			name: "task ",
@@ -69,8 +69,6 @@
 			}
 		}
 	});
+	app.getTasks()
 
-	getTasks();
-
-	console.log(app);
 }());
