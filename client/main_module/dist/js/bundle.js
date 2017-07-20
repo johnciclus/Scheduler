@@ -134,7 +134,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		});
 	}
 
-	var app = new Vue({
+	new Vue({
 		el: "#app",
 		data: {
 			name: "task ",
@@ -169,12 +169,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 					});
 				});
 			}
+		},
+		mounted: function mounted() {
+			this.getTasks();
 		}
 	});
-
-	getTasks();
-
-	console.log(app);
 })();
 
 },{"../js/http":1,"babel-runtime/core-js/promise":4,"vue":71,"vue-material":70}],3:[function(require,module,exports){

@@ -16,17 +16,17 @@
 
 	function getTasks() {
 		http.get("/api/tasks")
-			.then(function (tasks) {
-				console.log("getTasks");
-				var tasksList = document.getElementById("tasksList");
-				tasksList.innerHTML = "";
-				for (var id in tasks) {
-					var node = document.createElement("h1");
-					var textnode = document.createTextNode(tasks[id].name + ": [duration: " + tasks[id].duration + "]");
-					node.appendChild(textnode);
-					tasksList.prepend(node);
-				}
-			});
+		.then(function (tasks) {
+			console.log("getTasks");
+			var tasksList = document.getElementById("tasksList");
+			tasksList.innerHTML = "";
+			for (var id in tasks) {
+				var node = document.createElement("h1");
+				var textnode = document.createTextNode(tasks[id].name + ": [duration: " + tasks[id].duration + "]");
+				node.appendChild(textnode);
+				tasksList.prepend(node);
+			}
+		});
 	}
 
 	new Vue({
@@ -67,8 +67,10 @@
 						})
 					})
 			}
+		},
+		mounted: function(){
+			this.getTasks()
 		}
 	});
-	app.getTasks()
 
 }());
