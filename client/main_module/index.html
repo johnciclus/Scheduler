@@ -18,13 +18,20 @@
 					<md-icon>more_vert</md-icon>
 				</md-button>
 			</md-toolbar>
-
 			<md-bottom-bar>
 				<md-bottom-bar-item md-icon="speaker_notes" v-on:click="generateTasks">Generate tasks</md-bottom-bar-item>
 				<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
 				<md-bottom-bar-item md-icon="schedule">Organize scheduler</md-bottom-bar-item>
 			</md-bottom-bar>
+			<md-layout>
+				<md-layout md-flex="50">
+					<span>end</span>
+				</md-layout>
 
+				<md-layout md-flex="50">
+					<span>end</span>
+				</md-layout>
+			</md-layout>
 			<md-card class="paper">
 				<div id="tasksInput">
 					<md-input-container>
