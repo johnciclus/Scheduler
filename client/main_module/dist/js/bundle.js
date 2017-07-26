@@ -65,14 +65,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 				}
 			});
 		},
-		"put": function put(url) {
+		"put": function put(url, requestParams) {
 			return new _promise2.default(function (resolve, reject) {
+				if (!requestParams) requestParams = {};
+
 				if (window.XMLHttpRequest) {
 					var xhttp = init(resolve, reject);
 
 					xhttp.open("PUT", url);
 					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send();
+					xhttp.send((0, _stringify2.default)(requestParams));
 				} else {
 					reject("AJAX Calls not supported on this browser");
 				}
@@ -113,7 +115,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 	Vue.material.registerTheme("default", {
 		primary: "blue",
-		accent: "red",
+		accent: "blue",
 		warn: "red",
 		background: "white"
 	});
@@ -125,21 +127,46 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		data: {
 			name: "task ",
 			duration: 1,
-			tasks: [{ name: "task 1", duration: 1 }]
+			tasks: [],
+			technician1: [],
+			technician2: [],
+			technician3: []
 		},
 		methods: {
 			createTask: function createTask() {
 				var wc = this;
-				http.post("/api/tasks", { "name": this.name, "duration": this.duration }).then(function (object) {
-					console.log(object);
+				http.post("/api/tasks", { "name": this.name, "duration": this.duration }).then(function () {
 					wc.getTasks();
 				});
 			},
 			getTasks: function getTasks() {
 				var wc = this;
 				http.get("/api/tasks").then(function (tasks) {
-					console.log(tasks);
-					wc.tasks = tasks;
+					wc.tasks = [];
+					wc.technician1 = [];
+					wc.technician2 = [];
+					wc.technician3 = [];
+					tasks.forEach(function (task) {
+						switch (task.technician) {
+							case 1:
+								{
+									wc.technician1.push(task);
+									break;
+								}
+							case 2:
+								{
+									wc.technician2.push(task);
+									break;
+								}
+							case 3:
+								{
+									wc.technician3.push(task);
+									break;
+								}
+							default:
+								wc.tasks.push(task);
+						}
+					});
 				});
 			},
 			generateTasks: function generateTasks() {
@@ -148,7 +175,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 				for (var i = 0; i < 10; i++) {
 					promises.push(http.post("/api/tasks", {
 						"name": "Task " + i,
-						"duration": Math.floor(11 * Math.random())
+						"duration": wc.generateInteger(11)
 					}));
 				}
 				_promise2.default.all(promises).then(function () {
@@ -166,6 +193,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 						wc.getTasks();
 					});
 				});
+			},
+			organizeTasks: function organizeTasks() {
+				var promises = [];
+				var wc = this;
+				wc.tasks.forEach(function (task) {
+					promises.push(http.put("/api/tasks/" + task.id, { name: task.name, duration: task.duration, technician: 1 + wc.generateInteger(3) }));
+				});
+
+				_promise2.default.all(promises).then(function () {
+					wc.getTasks();
+				});
+			},
+			generateInteger: function generateInteger(limit) {
+				return Math.floor(limit * Math.random());
 			}
 		},
 		mounted: function mounted() {

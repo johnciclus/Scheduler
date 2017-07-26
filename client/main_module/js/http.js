@@ -54,14 +54,17 @@
 				}
 			});
 		},
-		"put": function (url) {
+		"put": function (url, requestParams) {
 			return new Promise(function (resolve, reject) {
+				if (!requestParams)
+					requestParams = {};
+
 				if (window.XMLHttpRequest) {
 					var xhttp = init(resolve, reject);
 
 					xhttp.open("PUT", url);
 					xhttp.setRequestHeader("content-type", "application/json");
-					xhttp.send();
+					xhttp.send(JSON.stringify(requestParams));
 				} else {
 					reject("AJAX Calls not supported on this browser");
 				}

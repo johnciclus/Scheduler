@@ -21,7 +21,7 @@
 			<md-bottom-bar>
 				<md-bottom-bar-item md-icon="speaker_notes" v-on:click="generateTasks">Generate tasks</md-bottom-bar-item>
 				<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
-				<md-bottom-bar-item md-icon="schedule">Organize scheduler</md-bottom-bar-item>
+				<md-bottom-bar-item md-icon="schedule" v-on:click="organizeTasks">Organize scheduler</md-bottom-bar-item>
 			</md-bottom-bar>
 			<md-layout md-column md-gutter>
 				<md-layout md-flex="80" md-row md-gutter>
@@ -44,9 +44,42 @@
 
 					<md-layout md-flex="66" >
 						<md-card class="paper" >
-							<md-avatar class="md-avatar-icon md-accent">
-								<md-icon>favorite</md-icon>
-							</md-avatar>
+							<md-layout md-row md-gutter>
+								<md-layout>
+									<md-list md-dense>
+										<md-subheader>Tecnhnician 1</md-subheader>
+										<md-list-item v-for="(task, index) in technician1"
+													  v-bind:item="task"
+													  v-bind:index="index"
+													  v-bind:key="task.id">
+											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+										</md-list-item>
+									</md-list>
+								</md-layout>
+								<md-layout>
+									<md-list md-dense>
+										<md-subheader>Tecnhnician 2</md-subheader>
+										<md-list-item v-for="(task, index) in technician2"
+													  v-bind:item="task"
+													  v-bind:index="index"
+													  v-bind:key="task.id">
+											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+										</md-list-item>
+									</md-list>
+								</md-layout>
+								<md-layout>
+									<md-list md-dense>
+										<md-subheader>Tecnhnician 3</md-subheader>
+										<md-list-item v-for="(task, index) in technician3"
+													  v-bind:item="task"
+													  v-bind:index="index"
+													  v-bind:key="task.id">
+											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+										</md-list-item>
+									</md-list>
+								</md-layout>
+							</md-layout>
+
 						</md-card>
 					</md-layout>
 
@@ -54,7 +87,10 @@
 				<md-layout md-flex="20" md-vertical-align="stretch" md-gutter>
 					<md-card class="paper" >
 						<div id="tasksList">
-							<md-chip v-for="task in tasks" :key="task.id">{{ task.name }} : [duration: {{ task.duration }}]</md-chip>
+							<md-chip v-for="(task, index) in tasks"
+									 v-bind:item="task"
+									 v-bind:index="index"
+									 v-bind:key="task.id">{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
 						</div>
 					</md-card>
 				</md-layout>
