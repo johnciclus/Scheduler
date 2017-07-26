@@ -23,35 +23,42 @@
 				<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
 				<md-bottom-bar-item md-icon="schedule">Organize scheduler</md-bottom-bar-item>
 			</md-bottom-bar>
-			<md-layout>
-				<md-layout md-flex="50">
-					<span>end</span>
-				</md-layout>
+			<md-layout md-column md-gutter>
+				<md-layout md-flex="80" md-row md-gutter>
+					<md-layout md-flex="33">
+						<md-card class="paper">
+							<div id="tasksInput">
+								<md-input-container>
+									<label>Name</label>
+									<md-input v-model="name"></md-input>
+								</md-input-container>
 
-				<md-layout md-flex="50">
-					<span>end</span>
+								<md-input-container>
+									<label>Duration</label>
+									<md-input v-model="duration"></md-input>
+								</md-input-container>
+								<md-button class="md-raised md-primary" v-on:click="createTask">Create</md-button>
+							</div>
+						</md-card>
+					</md-layout>
+
+					<md-layout md-flex="66" >
+						<md-card class="paper" >
+							<md-avatar class="md-avatar-icon md-accent">
+								<md-icon>favorite</md-icon>
+							</md-avatar>
+						</md-card>
+					</md-layout>
+
+				</md-layout>
+				<md-layout md-flex="20" md-vertical-align="stretch" md-gutter>
+					<md-card class="paper" >
+						<div id="tasksList">
+							<md-chip v-for="task in tasks" :key="task.id">{{ task.name }} : [duration: {{ task.duration }}]</md-chip>
+						</div>
+					</md-card>
 				</md-layout>
 			</md-layout>
-			<md-card class="paper">
-				<div id="tasksInput">
-					<md-input-container>
-						<label>Name</label>
-						<md-input v-model="name"></md-input>
-					</md-input-container>
-
-					<md-input-container>
-						<label>Duration</label>
-						<md-input v-model="duration"></md-input>
-					</md-input-container>
-					<md-button class="md-raised md-primary" v-on:click="createTask">Create</md-button>
-				</div>
-			</md-card>
-
-			<md-card class="paper">
-				<div id="tasksList">
-				</div>
-			</md-card>
-
 		</div>
 		<script src="./dist/js/bundle.js"></script>
 	</body>

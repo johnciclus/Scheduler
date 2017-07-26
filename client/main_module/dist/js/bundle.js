@@ -120,34 +120,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 	var http = require("../js/http");
 
-	function getTasks() {
-		http.get("/api/tasks").then(function (tasks) {
-			console.log("getTasks");
-			var tasksList = document.getElementById("tasksList");
-			tasksList.innerHTML = "";
-			for (var id in tasks) {
-				var node = document.createElement("h1");
-				var textnode = document.createTextNode(tasks[id].name + ": [duration: " + tasks[id].duration + "]");
-				node.appendChild(textnode);
-				tasksList.prepend(node);
-			}
-		});
-	}
-
 	new Vue({
 		el: "#app",
 		data: {
 			name: "task ",
-			duration: 1
+			duration: 1,
+			tasks: [{ name: "task 1", duration: 1 }]
 		},
 		methods: {
 			createTask: function createTask() {
-				http.post("/api/tasks", { "name": this.name, "duration": this.duration }).then(function () {
-					getTasks();
+				var wc = this;
+				http.post("/api/tasks", { "name": this.name, "duration": this.duration }).then(function (object) {
+					console.log(object);
+					wc.getTasks();
+				});
+			},
+			getTasks: function getTasks() {
+				var wc = this;
+				http.get("/api/tasks").then(function (tasks) {
+					console.log(tasks);
+					wc.tasks = tasks;
 				});
 			},
 			generateTasks: function generateTasks() {
 				var promises = [];
+				var wc = this;
 				for (var i = 0; i < 10; i++) {
 					promises.push(http.post("/api/tasks", {
 						"name": "Task " + i,
@@ -155,17 +152,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 					}));
 				}
 				_promise2.default.all(promises).then(function () {
-					getTasks();
+					wc.getTasks();
 				});
 			},
 			clearTasks: function clearTasks() {
+				var wc = this;
 				http.get("/api/tasks").then(function (tasks) {
 					var promises = [];
 					tasks.forEach(function (task) {
 						promises.push(http.delete("/api/tasks/" + task.id));
 					});
 					_promise2.default.all(promises).then(function () {
-						getTasks();
+						wc.getTasks();
 					});
 				});
 			}
