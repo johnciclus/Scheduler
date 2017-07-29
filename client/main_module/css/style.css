@@ -7,3 +7,11 @@
 .md-chip{
 	margin: 5px;
 }
+
+.card-holder .md-card {
+	width: 100%;
+	max-width: 280px;
+	margin: 0 4px 16px;
+	display: inline-block;
+	vertical-align: top;
+}

@@ -1,102 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Vue example</title>
-		<link rel="manifest" href="./etc/manifest.json">
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="./dist/css/vue-material.css">
-		<link rel="stylesheet" href="./dist/css/style.css">
-	</head>
-	<body>
-		<div id="app">
-			<md-toolbar>
-				<h1 class="md-title" style="flex: 1">Technician Scheduler</h1>
-				<md-button class="md-icon-button">
-					<md-icon>more_vert</md-icon>
-				</md-button>
-			</md-toolbar>
-			<md-bottom-bar>
-				<md-bottom-bar-item md-icon="speaker_notes" v-on:click="generateTasks">Generate tasks</md-bottom-bar-item>
-				<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
-				<md-bottom-bar-item md-icon="schedule" v-on:click="organizeTasks">Organize scheduler</md-bottom-bar-item>
-			</md-bottom-bar>
-			<md-layout md-column md-gutter>
-				<md-layout md-flex="80" md-row md-gutter>
-					<md-layout md-flex="33">
-						<md-card class="paper">
-							<div id="tasksInput">
-								<md-input-container>
-									<label>Name</label>
-									<md-input v-model="name"></md-input>
-								</md-input-container>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Vue example</title>
+	<link rel="manifest" href="./etc/manifest.json">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="./dist/css/vue-material.css">
+	<link rel="stylesheet" href="./dist/css/style.css">
+</head>
+<body>
+<div id="app">
+	<md-toolbar>
+		<h1 class="md-title" style="flex: 1">Technician Scheduler</h1>
+		<md-button class="md-icon-button">
+			<md-icon>more_vert</md-icon>
+		</md-button>
+	</md-toolbar>
+	<md-bottom-bar>
+		<md-bottom-bar-item md-icon="speaker_notes" v-on:click="generateTasks">Generate tasks</md-bottom-bar-item>
+		<md-bottom-bar-item md-icon="speaker_notes_off" v-on:click="clearTasks">Clear tasks</md-bottom-bar-item>
+		<md-bottom-bar-item md-icon="schedule" v-on:click="organizeTasks">Organize scheduler</md-bottom-bar-item>
+	</md-bottom-bar>
+	<md-layout md-column md-gutter>
+		<md-layout md-flex="80" md-row md-gutter>
+			<md-layout md-flex="33">
+				<md-card class="paper">
+					<div id="tasksInput">
+						<md-input-container>
+							<label>Name</label>
+							<md-input v-model="name"></md-input>
+						</md-input-container>
 
-								<md-input-container>
-									<label>Duration</label>
-									<md-input v-model="duration"></md-input>
-								</md-input-container>
-								<md-button class="md-raised md-primary" v-on:click="createTask">Create</md-button>
-							</div>
-						</md-card>
-					</md-layout>
-
-					<md-layout md-flex="66" >
-						<md-card class="paper" >
-							<md-layout md-row md-gutter>
-								<md-layout>
-									<md-list md-dense>
-										<md-subheader>Tecnhnician 1</md-subheader>
-										<md-list-item v-for="(task, index) in technician1"
-													  v-bind:item="task"
-													  v-bind:index="index"
-													  v-bind:key="task.id">
-											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
-										</md-list-item>
-									</md-list>
-								</md-layout>
-								<md-layout>
-									<md-list md-dense>
-										<md-subheader>Tecnhnician 2</md-subheader>
-										<md-list-item v-for="(task, index) in technician2"
-													  v-bind:item="task"
-													  v-bind:index="index"
-													  v-bind:key="task.id">
-											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
-										</md-list-item>
-									</md-list>
-								</md-layout>
-								<md-layout>
-									<md-list md-dense>
-										<md-subheader>Tecnhnician 3</md-subheader>
-										<md-list-item v-for="(task, index) in technician3"
-													  v-bind:item="task"
-													  v-bind:index="index"
-													  v-bind:key="task.id">
-											<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
-										</md-list-item>
-									</md-list>
-								</md-layout>
-							</md-layout>
-
-						</md-card>
-					</md-layout>
-
-				</md-layout>
-				<md-layout md-flex="20" md-vertical-align="stretch" md-gutter>
-					<md-card class="paper" >
-						<div id="tasksList">
-							<md-chip v-for="(task, index) in tasks"
-									 v-bind:item="task"
-									 v-bind:index="index"
-									 v-bind:key="task.id">{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
-						</div>
-					</md-card>
-				</md-layout>
-
+						<md-input-container>
+							<label>Duration</label>
+							<md-input v-model="duration"></md-input>
+						</md-input-container>
+						<md-button class="md-raised md-primary" v-on:click="createTask">Create</md-button>
+					</div>
+				</md-card>
 			</md-layout>
-		</div>
-		<script src="./dist/js/bundle.js"></script>
-	</body>
+
+			<md-layout md-flex="66" >
+				<div class="paper card-holder" >
+
+					<md-card md-with-hover>
+						<md-card-header>
+							<div class="md-title">Tecnhnician 1</div>
+							<div class="md-subhead">Subtitle here</div>
+						</md-card-header>
+
+						<md-card-content>
+							<md-list-item v-for="(task, index) in technician1"
+										  v-bind:item="task"
+										  v-bind:index="index"
+										  v-bind:key="task.id">
+								<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+							</md-list-item>
+						</md-card-content>
+
+						<md-card-actions>
+							<md-button>Action</md-button>
+							<md-button>Action</md-button>
+						</md-card-actions>
+					</md-card>
+
+
+					<md-card md-with-hover>
+						<md-card-header>
+							<div class="md-title">Tecnhnician 2</div>
+							<div class="md-subhead">Subtitle here</div>
+						</md-card-header>
+
+						<md-card-content>
+							<md-list-item v-for="(task, index) in technician2"
+										  v-bind:item="task"
+										  v-bind:index="index"
+										  v-bind:key="task.id">
+								<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+							</md-list-item>
+						</md-card-content>
+
+						<md-card-actions>
+							<md-button>Action</md-button>
+							<md-button>Action</md-button>
+						</md-card-actions>
+					</md-card>
+
+
+					<md-card md-with-hover>
+						<md-card-header>
+							<div class="md-title">Tecnhnician 3</div>
+							<div class="md-subhead">Subtitle here</div>
+						</md-card-header>
+
+						<md-card-content>
+							<md-list-item v-for="(task, index) in technician3"
+										  v-bind:item="task"
+										  v-bind:index="index"
+										  v-bind:key="task.id">
+								<md-chip>{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+							</md-list-item>
+						</md-card-content>
+
+						<md-card-actions>
+							<md-button>Action</md-button>
+							<md-button>Action</md-button>
+						</md-card-actions>
+					</md-card>
+
+
+				</div>
+			</md-layout>
+
+		</md-layout>
+		<md-layout md-flex="20" md-vertical-align="stretch" md-gutter>
+			<md-card class="paper" >
+				<div id="tasksList">
+					<md-chip v-for="(task, index) in tasks"
+							 v-bind:item="task"
+							 v-bind:index="index"
+							 v-bind:key="task.id">{{ task.name }} : [duration: {{ task.duration }}, technician: {{ task.technician }}]</md-chip>
+				</div>
+			</md-card>
+		</md-layout>
+
+	</md-layout>
+</div>
+<script src="./dist/js/bundle.js"></script>
+</body>
 </html>
